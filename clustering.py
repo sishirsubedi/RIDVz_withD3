@@ -1,13 +1,32 @@
 import pandas as pd
+import matplotlib.pylab as plt
 from sklearn import cluster
+import numpy as np
+from sklearn import preprocessing
 
-fmat = pd.read_csv("feature_matrix.csv")
-fmat.head(2)
 
-k_means = cluster.KMeans(n_clusters=3)
-k_means.fit(fmat)
-result = pd.DataFrame(fmat.index.values,columns=['id'])
-result['cluster'] = k_means.labels_
-result.head(2)
 
-result.to_json("clusters.json",orient='index')
+file1 = pd.read_json("../house.json", lines=True)
+dat = pd.DataFrame(file1)
+dat.head(2)
+
+
+countries =[]
+for i in range(len(dat)):
+
+    row = dat.iloc[i,:]
+
+    if row['countrycode'] not in countries:
+        print(row)
+
+        currentdata = dat.loc[dat['countrycode']==row['countrycode'],:]
+
+        print (currentdata.shape)
+
+        print (currentdata.head(1))
+
+    else:
+        continue
+
+
+    break
