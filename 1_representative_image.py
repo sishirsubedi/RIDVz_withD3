@@ -8,10 +8,14 @@ from sklearn import preprocessing
 
 file1 = pd.read_json("../house.json", lines=True)
 dat = pd.DataFrame(file1)
-dat.head(2)
+print(dat.head(2))
 
 
 def get_representative(mat):
+
+    if mat.shape[0] <25: ## not enough data for variance
+        return mat.iloc[0,:]
+
     ##calculate mean strokes
     mean_array = []
     for j in range(len(mat)):
@@ -62,12 +66,17 @@ for i in range(len(dat)):
 
     row = dat.iloc[i,:]
 
+
     if row['countrycode'] not in countries:
+
         countries.append(row['countrycode'])
+
         currentdata = dat.loc[dat['countrycode']==row['countrycode'],:]
 
+        print(row['countrycode'], len(countries),currentdata.shape)
+
         representive = get_representative(currentdata)
-        #break
+
         summary.append(representive)
 
     else:
