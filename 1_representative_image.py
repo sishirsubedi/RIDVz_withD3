@@ -11,7 +11,6 @@ dat = pd.DataFrame(file1)
 dat.head(2)
 
 
-
 def get_representative(mat):
     ##calculate mean strokes
     mean_array = []
@@ -24,7 +23,36 @@ def get_representative(mat):
         if len(mat.iloc[k, :].drawing) == mean_strokes:
             common_strokes.append(mat.iloc[k, :])
 
-    return common_strokes[0]
+
+    #return common_strokes[0]
+    features =[]
+    for row in common_strokes:
+        rowfeature =[]
+        for stroke in range(mean_strokes):
+            rowfeature.append([
+                np.min(row.drawing[stroke][0]),
+                np.max(row.drawing[stroke][0]),
+                np.mean(row.drawing[stroke][0]),
+                np.var(row.drawing[stroke][0]),
+                np.min(row.drawing[stroke][1]),
+                np.max(row.drawing[stroke][1]),
+                np.mean(row.drawing[stroke][1]),
+                np.var(row.drawing[stroke][1])
+            ])
+        features.append(np.array(rowfeature).flatten())
+
+    df_features = pd.DataFrame(features)
+    feature_mean = df_features.mean()
+    dotp_array =[]
+    for i in range(df_features.shape[0]):
+        dotp = np.dot(df_features.iloc[i,:].values,feature_mean.values)#/np.linalg.norm(df_features.iloc[1,:].values)/np.linalg.norm(feature_mean.values)
+        #angle = np.arccos(np.clip(c, -1, 1))
+        dotp_array.append(dotp)
+
+    maxindex = dotp_array.index(max(dotp_array))
+
+    return mat.iloc[maxindex,:]
+
 
 
 summary=[]
@@ -48,5 +76,4 @@ for i in range(len(dat)):
 
 
 df_summary= pd.DataFrame(summary)
-df_summary.shape
 df_summary.to_json("house_rep.json",orient='records')
