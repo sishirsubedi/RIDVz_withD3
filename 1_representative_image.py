@@ -22,29 +22,31 @@ def get_representative(mat):
     common_strokes = []
     for k in range(len(mat)):
         if len(mat.iloc[k, :].drawing) == mean_strokes:
-            common_strokes.append(mat.iloc[k, :].drawing)
+            common_strokes.append(mat.iloc[k, :])
 
     return common_strokes[0]
 
 
-
+summary=[]
 countries =[]
+
 for i in range(len(dat)):
 
     row = dat.iloc[i,:]
 
     if row['countrycode'] not in countries:
-        print(row)
-
+        countries.append(row['countrycode'])
         currentdata = dat.loc[dat['countrycode']==row['countrycode'],:]
 
-        currentdata = currentdata.iloc[:,[0,1]]
-
         representive = get_representative(currentdata)
-
-        countries.append([row['countrycode'],representive])
+        #break
+        summary.append(representive)
 
     else:
         continue
 
 
+
+df_summary= pd.DataFrame(summary)
+df_summary.shape
+df_summary.to_json("house_rep.json",orient='records')
