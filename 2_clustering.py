@@ -11,10 +11,7 @@ dat = pd.DataFrame(file1)
 print(dat.head(2))
 
 
-def get_representative(mat):
-
-    if mat.shape[0] <25: ## not enough data for variance
-        return mat.iloc[0,:]
+def get_meanrep(mat):
 
     ##calculate mean strokes
     mean_array = []
@@ -27,6 +24,8 @@ def get_representative(mat):
         if len(mat.iloc[k, :].drawing) == mean_strokes:
             common_strokes.append(mat.iloc[k, :])
 
+    if len(common_strokes)<2:
+        return "error"
 
     #return common_strokes[0]
     features =[]
@@ -77,18 +76,7 @@ def get_representative(mat):
 
         features.append(np.array(rowfeature))
     df_features = pd.DataFrame(features)
-    feature_mean = df_features.mean()
-
-    dotp_array =[]
-    for i in range(df_features.shape[0]):
-        dotp = np.dot(df_features.iloc[i,:].values,feature_mean.values)#/np.linalg.norm(df_features.iloc[1,:].values)/np.linalg.norm(feature_mean.values)
-        #angle = np.arccos(np.clip(c, -1, 1))
-        dotp_array.append(dotp)
-
-    maxindex = dotp_array.index(max(dotp_array))
-
-    return mat.iloc[maxindex,:]
-
+    return df_features.mean()
 
 
 summary=[]
@@ -98,6 +86,10 @@ for i in range(len(dat)):
 
     row = dat.iloc[i,:]
 
+    features =[]
+
+    if row['countrycode'] == 'BS':
+        break
 
     if row['countrycode'] not in countries:
 
@@ -105,17 +97,29 @@ for i in range(len(dat)):
 
         currentdata = dat.loc[dat['countrycode']==row['countrycode'],:]
 
-        print(row['countrycode'], len(countries),currentdata.shape)
+        if currentdata.shape[0]<10:
+            continue
 
+        print(row['countrycode'], len(countries), currentdata.shape)
+        representive = get_meanrep(currentdata)
 
-        representive = get_representative(currentdata)
-
-        summary.append(representive)
+        features.append(row['countrycode'])
+        for val in representive:
+            features.append(val)
 
     else:
         continue
+    summary.append(features)
 
+df_summary = pd.DataFrame(summary)
+df_summary.fillna(0,inplace=True)
 
+kmeans = cluster.KMeans(n_clusters=7)
+kmeans = kmeans.fit(df_summary.iloc[:,1:])
+labels = kmeans.predict(df_summary.iloc[:,1:])
+df_summary['cluster'] = labels
 
-df_summary= pd.DataFrame(summary)
-df_summary.to_json("house_rep.json",orient='records')
+cluster_result = df_summary.iloc[:,[0,df_summary.shape[1]-1]]
+cluster_result.columns = ['country','cluster']
+cluster_result.to_json("house_cluster.json",orient='records')
+

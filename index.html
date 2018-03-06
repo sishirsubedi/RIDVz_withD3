@@ -10,7 +10,7 @@
 <body>
   <script>
     var width = 960;
-    var height = 500;
+    var height = 1000;
     var scale = 1.25
     var delay = 1600
     var svg = d3.select("body").append("svg")
@@ -27,7 +27,7 @@
      //d3.json("complex-faces.json", function(err, faces) { 
      d3.json("house_rep.json", function(err, faces) {      
       
-      render(150)
+      render(0)
       function render(i) {
         var drawing = faces[i]
         var strokes = strokifyDrawing(drawing.drawing)
@@ -101,4 +101,8 @@ function strokifyDrawing(drawing) {
   return strokes
 }
   </script>
+
+
+
+
 </body>
