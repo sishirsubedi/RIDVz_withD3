@@ -1,36 +1,40 @@
-var drawingWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-var drawingHeight=Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-var margin = { top: 10, right: 10, bottom: 100, left: 50 };
+var drawingWidth = 100
+var drawingHeight= 100;
+var margin = { top: 0, right: 0, bottom: 0, left: 0 };
 var xAxisLabelHeader = "X Header";
 var yAxisLabelHeader = "Y Header";
 var data;
 var canvas;
 var chartWidth;
 var chartHeight;
-
+console.log(drawingWidth);
 init();
 
 function init() {
- 	chartWidth = drawingWidth - margin.left - margin.right;
-    chartHeight = drawingHeight - margin.top - margin.bottom;
+ 	chartWidth = drawingWidth;
+    chartHeight = drawingHeight;
     var scale = 1.25
     var delay = 1600
-    var svg = d3.select("body").append("svg")
-        .attr("width", chartWidth)
-        .attr("height", chartHeight)
-        .style("border", "1px solid #111")
+    var svg = d3.select("#drawing").append("svg")
+        .attr("width", "1280")
+        .attr("height", "600")
+        .attr("viewBox", "0 0 1280 600")
+        .attr("preserveAspectRatio", "xMinYMin meet")
+        .attr("id","testDraw")
+        // .style("border", "1px solid #111")
+        
 
     var line =  d3.line()
         .x(function(d) { return d.x })
         .y(function(d) { return d.y })
         .curve(d3.curveBasis)
 
-    d3.json("data/house_rep.json", function(err, faces) {      
+    d3.json("./data/house_rep.json", function(err,house) {      
         render(0)
         function render(i) {
-            var drawing = faces[i]
+            var drawing = house[i]
             var strokes = strokifyDrawing(drawing.drawing)
-            center(strokes)
+            //center(strokes)
 
             var ps = svg.selectAll("path").data(strokes)
             ps.exit().remove()
@@ -40,9 +44,16 @@ function init() {
                 .attr("d", line)
                 .style("fill", "none")
                 .style("stroke", "#111")
-                .style("stroke-width", 3)
+                .style("stroke-width", 15)
                 .style("stroke-linecap", "round")
+                
         
+            setTimeout(function() {
+                i++
+
+                if(i >= house.length) i = 0;
+                render(i)
+            }, delay)
         } 
 	})
     function center(strokes) {
