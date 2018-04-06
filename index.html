@@ -6,11 +6,17 @@
 <link rel="stylesheet" href="./styles/simple-style.css">
 <link rel="stylesheet" href="./styles/cool_buttons.css">
 <script src="./scripts/buttons.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.js"></script>
+<script src="https://d3js.org/d3-queue.v3.min.js"></script>
+<script src="./scripts/script.js"></script>
 
 <body>
   <div id="title" class="w3-container">
     <a class="home" href="index.html"><h1><center>RIDVz- Recognizable Image Drawing and Visualization</center></h1></a>
+  </div>
+    <div class="w3-container" id="mainButtons">
+    <a href="#" class="btn-3d maroon " onclick="show_info()">Project Information</a>
+    <a href="#" class="btn-3d maroon " onclick="show_image_menu()">Choose Object</a>
   </div>
   
   <div  id="animation">
@@ -127,12 +133,32 @@
     </svg>
   </div>
   
-  <div class="w3-container" id="mainButtons">
-    <a href="#" class="btn-3d maroon " onclick="show_info()">Project Information</a>
-    <a href="#" class="btn-3d maroon " onclick="show_image_menu()">Choose Object</a>
-  </div>
+
   <div class="w3-container" id="project_info">
-    <p>Project Infomation</p>
+    <p>
+    A sketch (ultimately from Greek σχέδιος – schedios, "done extempore"[1][2][3]) is a rapidly executed freehand drawing that is not usually intended as a finished work.[4] A sketch may serve a number of purposes: it might record something that the artist sees, it might record or develop an idea for later use or it might be used as a quick way of graphically demonstrating an image, idea or principle.
+
+Sketches can be made in any drawing medium. The term is most often applied to graphic work executed in a dry medium such as silverpoint, graphite, pencil, charcoal or pastel. But it may also apply to drawings executed in pen and ink, ballpoint pen, water colour and oil paint. The latter two are generally referred to as "water colour sketches" and "oil sketches". A sculptor might model three-dimensional sketches in clay, plasticine or wax.
+
+Contents
+
+    1 Applications of sketching
+    2 Gallery
+    3 See also
+    4 References
+    5 Sources
+    6 External links
+
+Applications of sketching
+
+Sketching is generally a prescribed part of the studies of art students.[5] This generally includes making sketches (croquis) from a live model whose pose changes every few minutes. A "sketch" usually implies a quick and loosely drawn work, while related terms such as study, modello and "preparatory drawing" usually refer to more finished and careful works to be used as a basis for a final work, often in a different medium, but the distinction is imprecise. Underdrawing is drawing underneath the final work, which may sometimes still be visible, or can be viewed by modern scientific methods such as X-rays.
+
+Most visual artists use, to a greater or lesser degree, the sketch as a method of recording or working out ideas. The sketchbooks of some individual artists have become very well known,[4] including those of Leonardo da Vinci and Edgar Degas which have become art objects in their own right, with many pages showing finished studies as well as sketches. The term "sketchbook" refers to a book of blank paper on which an artist can draw (or has already drawn) sketches. The book might be purchased bound or might comprise loose leaves of sketches assembled or bound together.[6]
+
+The ability to quickly record impressions through sketching has found varied purposes in today's culture. Courtroom sketches record scenes and individuals in law courts. Sketches drawn to help authorities find or identify wanted people are called composite sketches. Street artists in popular tourist areas sketch portraits within minutes.[5]
+    
+    
+    </p>
   </div>
   
   <div class="w3-container" id="image_menu">
@@ -184,18 +210,41 @@
         </div>
       </div>
   </div>
-  
-  <div class = "w3-container" id = "test">
-    
-  </div>
-  
-  
-
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-
 <script src="./scripts/load_map.js"></script>
 <script src="./scripts/drawing.js"></script>
+
+
+<div class="w3-container"  id="clusterDiv">
+  <p> Hello from cluster area</p>
+<div id="controls">
+  <span>
+    <label><input id="combine" type="radio" name="grouping" value="combine" checked>Combine</label>
+    <label><input id="continents" type="radio" name="grouping" value="continents">Cluster</label>
+    <label><input id="country-centers" type="radio" name="grouping" value="country-centers">World Map</label>
+    <label><input id="population" type="radio" name="grouping" value="population">Population</label>
+  </span>
+  <span>
+    <label><input id="colors" type="radio" name="fill" value="color-view" checked>color-view</label>
+    <label><input id="flags" type="radio" name="fill" value="flag-view">flag-view</label>
+  </span>
+</div>
+<div id="country-info"></div>
+<div id="bubble-chart"></div>
+<div class="infobox" style="visibility: hidden;">
+  <h3 class="title">Country</h3>
+</div>
+<script>
+  d3.queue()
+    .defer(d3.csv, "data/countries.csv")
+    .defer(d3.json, "data/continent-names.json")
+    .await(createBubbleChart);
+</script>
+
+</div>
+
+
+
 </body>
 </html>

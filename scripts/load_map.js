@@ -1,5 +1,7 @@
 function show_map() {
     document.getElementById("chartDiv").style = "display: block;";
+    //document.getElementById("clusterDiv").style = "visibility: visible;";
+    document.getElementById("clusterDiv").style = "display: block;";
     //loadMap();
 }
 var width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0),
@@ -81,4 +83,7 @@ function drawMap(world, data) {
 }
 
 var chart = d3.select("#chartDiv")
+    .style("display", "none");
+    
+var bubble_chart = d3.select("#clusterDiv")
     .style("display", "none");
