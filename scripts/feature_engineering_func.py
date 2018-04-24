@@ -523,53 +523,71 @@ def _value_from_stroke(stroke_length,percentage,xperstroke):
 
 
 
-################ analysis @@@@@@@@@@@@@@@@@@
-#
-# image_object = ['house','cake','face','dog','tornado']
-#
-# for item in image_object:
-#     filepath = str(item)+".json"
-#     df = pd.read_json(filepath, lines=True)
-#     print(str(item), df.head(1))
-#
-#     df_fe = feature_engineering_ensemble(df)
-#
-#     print(str(item),df_fe.shape)
-#     #df_fe.to_csv((str(item)+"_fe.csv"),index=False)
-#
-#     ccs = np.unique(df_fe.countrycode.values)
-#
-#     best_rep = []
-#     for c in ccs:
-#         rows = df_fe[(df_fe['countrycode']==c)]
-#
-#         mean_vec = rows.iloc[:,2:].mean(axis=0)
-#
-#         dotp_array = []
-#         for i in range(rows.shape[0]):
-#             dotp = np.dot(rows.iloc[i, 2:].values,  mean_vec.values)
-#             dotp_array.append(dotp)
-#
-#         maxindex = dotp_array.index(max(dotp_array))
-#
-#         best_rep.append(rows.iloc[maxindex, :].values)
-#
-#     df_best_rep = pd.DataFrame(best_rep)
-#     df_best_rep.columns = df_fe.columns
-#     df_best_rep.to_csv((str(item)+"_fe.csv"),index=False)
-#
-#     best_rep_drawing =pd.DataFrame(index=np.arange(0, len(df_best_rep.countrycode.values)),columns=df.columns)
-#
-#     i = 0
-#     for c in df_best_rep.countrycode.values:
-#
-#         row = df_best_rep[df_best_rep.countrycode == c]
-#
-#         best_rep_drawing.iloc[i,:]=df[df.key_id == row.key_id.values[0]].values
-#         i += 1
-#
-#
-#     best_rep_drawing.to_json((str(item) + "_fe_drawing.json"), orient='records')
-#
-#     print ('completed for -- ',(str(item) ))
-#
+############### analysis @@@@@@@@@@@@@@@@@@
+
+
+ccode = pd.read_csv("cc_2_3.csv")
+ccode.head(1)
+
+image_object = ['dog','tornado']
+
+for item in image_object:
+    filepath = str(item)+".json"
+    df = pd.read_json(filepath, lines=True)
+    print(str(item), df.head(1))
+
+    df_fe = feature_engineering_ensemble(df)
+
+    print(str(item),df_fe.shape)
+    #df_fe.to_csv((str(item)+"_fe.csv"),index=False)
+
+    ccs = np.unique(df_fe.countrycode.values)
+
+    best_rep = []
+    for c in ccs:
+        rows = df_fe[(df_fe['countrycode']==c)]
+
+        mean_vec = rows.iloc[:,2:].mean(axis=0)
+
+        dotp_array = []
+        for i in range(rows.shape[0]):
+            dotp = np.dot(rows.iloc[i, 2:].values,  mean_vec.values)
+            dotp_array.append(dotp)
+
+        maxindex = dotp_array.index(max(dotp_array))
+
+        best_rep.append(rows.iloc[maxindex, :].values)
+
+    df_best_rep = pd.DataFrame(best_rep)
+    df_best_rep.columns = df_fe.columns
+    #df_best_rep.to_csv((str(item)+"_fe.csv"),index=False)
+
+    temp_df_columns = list(df.columns)
+    temp_df_columns.append('cc3')
+    best_rep_drawing =pd.DataFrame(index=np.arange(0, len(df_best_rep.countrycode.values)),columns=temp_df_columns)
+
+    i = 0
+    for c in df_best_rep.countrycode.values:
+
+        row = df_best_rep[df_best_rep.countrycode == c]
+
+        new_row = df[df.key_id == row.key_id.values[0]]
+
+        newcode = new_row.countrycode.values[0]
+
+        code3 =''
+        if newcode in ccode.cc2.values:
+            code3 = ccode[ccode.cc2==new_row.countrycode.values[0]].cc3.values[0]
+        else:
+            code3 = 'XYZ'
+
+        new_row['cc3'] = code3
+
+        best_rep_drawing.iloc[i,:]=new_row.values
+        i += 1
+
+
+    best_rep_drawing.to_json((str(item) + "_rep.json"), orient='records')
+
+    print ('completed for -- ',(str(item) ))
+

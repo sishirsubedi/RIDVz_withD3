@@ -1,8 +1,8 @@
 {
-  "AF": "Africa",
-  "AS": "Asia",
-  "EU": "Europe",
-  "NA": "North America",
-  "SA": "South America",
-  "OC": "Oceana"
+  "AF": "C1",
+  "AS": "C2",
+  "EU": "C3",
+  "NA": "C4",
+  "SA": "C5",
+  "OC": "C6"
 }

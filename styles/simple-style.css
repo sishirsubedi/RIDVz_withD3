@@ -28,6 +28,11 @@ svg {
     margin-left: 20%;
     /*margin-right: auto;*/
 }
+#map_cluster_choice_btns{
+  margin-left: 20%;
+  
+}
+
 @keyframes dash {
   from {
     stroke-dashoffset: 1000;
@@ -194,3 +199,20 @@ circle {
   /*visibility: hidden;*/
   display: none;
 }
+
+#evalDiv {
+  /*visibility: hidden;*/
+  display: none;
+}
+
+#map_cluster_choice_btns {
+	display: none;
+	background-color: white;
+}
+
+#selected_image{
+  float: left;
+  width: 10%;
+  height: 10%;
+}
+

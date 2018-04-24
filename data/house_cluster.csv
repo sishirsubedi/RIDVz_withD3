@@ -1,67 +1,163 @@
-United States,5,1
-Russian Federation,5,4
-Australia,5,4
-"Korea, Republic of",5,0
-Canada,5,4
-Kuwait,5,6
-Serbia,5,1
-Switzerland,5,4
-India,5,0
-United Kingdom,5,1
-Bulgaria,5,6
-Brazil,5,1
-Finland,5,4
-Germany,5,4
-Austria,5,4
-Slovakia,5,1
-Sweden,5,1
-Belarus,5,1
-Chile,5,1
-Italy,5,4
-Turkey,5,0
-Estonia,5,1
-Argentina,5,6
-Singapore,5,5
-Philippines,5,1
-Hungary,5,4
-Netherlands,5,4
-Czech Republic,5,1
-Romania,5,6
-Ukraine,5,1
-Viet Nam,5,1
-Indonesia,5,0
-France,5,1
-Iraq,5,2
-Poland,5,1
-Qatar,5,6
-Colombia,5,1
-Mexico,5,0
-Japan,5,4
-New Zealand,5,4
-"Macedonia, the Former Yugoslav Republic of",5,1
-Portugal,5,1
-Hong Kong,5,5
-Oman,5,6
-Israel,5,4
-Thailand,5,0
-"Palestine, State of",5,3
-Tunisia,5,6
-Ecuador,5,4
-Slovenia,5,4
-"Taiwan, Province of China",5,5
-Saudi Arabia,5,6
-South Africa,5,4
-Egypt,5,6
-Croatia,5,1
-Kazakhstan,5,1
-Spain,5,4
-Belgium,5,1
-Norway,5,4
-Lebanon,5,1
-Malaysia,5,0
-Georgia,5,6
-Peru,5,1
-Denmark,5,4
-Brunei Darussalam,5,0
-Bosnia and Herzegovina,5,1
-Morocco,5,3
+CountryName,CountryCode,ContinentCode,CenterLongitude,CenterLatitude,Population
+Afghanistan,AF,OC,65.0,33.0,32526560
+Albania,AL,AF,20.0,41.0,2896680
+Algeria,DZ,OC,3.0,28.0,39666520
+Anguilla,AI,AS,-63.05,18.22,14610
+Antigua and Barbuda,AG,SA,-61.8,17.05,91820
+Argentina,AR,AF,-64.0,-34.0,43416760
+Armenia,AM,EU,45.0,40.0,3017710
+Aruba,AW,AS,-69.97,12.5,103890
+Australia,AU,OC,135.0,-25.0,23968970
+Austria,AT,AF,13.33,47.33,8544590
+Azerbaijan,AZ,SA,47.5,40.5,9753970
+Bahamas,BS,SA,-76.0,24.0,388020
+Bahrain,BH,AF,50.5,26.0,1377240
+Bangladesh,BD,AF,90.0,24.0,160995640
+Barbados,BB,EU,-59.53,13.17,284220
+Belarus,BY,OC,28.0,53.0,9495830
+Belgium,BE,EU,4.0,50.83,11299190
+Belize,BZ,SA,-88.75,17.25,359290
+Bermuda,BM,AF,-64.75,32.33,62000
+Bhutan,BT,SA,90.5,27.5,774830
+Bolivia,BO,NA,-65.0,-17.0,10724710
+Bosnia and Herzegovina,BA,NA,17.83,44.25,3810420
+Botswana,BW,AS,24.0,-22.0,2262490
+Brazil,BR,AF,-55.0,-10.0,207847530
+Brunei Darussalam,BN,NA,114.67,4.5,423190
+Bulgaria,BG,OC,25.0,43.0,7149790
+Cambodia,KH,NA,105.0,13.0,15577900
+Cameroon,CM,AS,12.0,6.0,23344180
+Canada,CA,NA,-96.0,60.0,35939930
+Cayman Islands,KY,EU,-80.67,19.5,59970
+Chile,CL,OC,-71.0,-30.0,17948140
+China,CN,SA,105.0,35.0,1376048940
+Colombia,CO,NA,-72.0,4.0,48228700
+"Congo, Democratic Republic",CD,AS,23.42,-3.52,77266810
+Costa Rica,CR,OC,-84.0,10.0,4807850
+"Cote D""Ivoire",CI,AS,-5.0,8.0,22701560
+Croatia,HR,NA,15.5,45.17,4240320
+Cyprus,CY,NA,33.0,35.0,1165300
+Czech Republic,CZ,OC,15.0,49.75,10543190
+Denmark,DK,OC,10.0,56.0,5669080
+Dominica,DM,SA,-61.33,15.5,72680
+Dominican Republic,DO,EU,-70.67,19.0,10528390
+Ecuador,EC,EU,-77.5,-2.0,16144360
+Egypt,EG,EU,30.0,27.0,91508080
+El Salvador,SV,SA,-88.92,13.83,6126580
+Estonia,EE,OC,26.0,59.0,1312560
+Faroe Islands,FO,AS,-7.0,62.0,48200
+Fiji,FJ,NA,178.0,-18.0,892150
+Finland,FI,NA,26.0,64.0,5503460
+France,FR,NA,2.0,46.0,64395350
+French Polynesia,PF,AS,-140.0,-15.0,282760
+Gabon,GA,SA,11.75,-1.0,1725290
+Georgia,GE,NA,43.5,42.0,3999810
+Germany,DE,AS,10.5,51.5,80688550
+Ghana,GH,AS,-2.0,8.0,27409890
+Gibraltar,GI,OC,-5.35,36.13,32220
+Greece,GR,AF,22.0,39.0,10954620
+Greenland,GL,AS,-40.0,72.0,56190
+Grenada,GD,AS,-61.67,12.12,106830
+Guadeloupe,GP,EU,-61.58,16.25,468450
+Guam,GU,EU,144.83,13.47,169890
+Guatemala,GT,AS,-90.25,15.5,16342900
+Guyana,GY,NA,-59.0,5.0,767090
+Honduras,HN,OC,-86.5,15.0,8075060
+Hong Kong,HK,OC,114.17,22.25,7287980
+Hungary,HU,NA,20.0,47.0,9855020
+Iceland,IS,NA,-18.0,65.0,329430
+India,IN,NA,77.0,20.0,1311050530
+Indonesia,ID,EU,120.0,-5.0,257563820
+Iraq,IQ,AF,44.0,33.0,36423400
+Ireland,IE,AF,-8.0,53.0,4688470
+Isle of Man,IM,SA,-4.55,54.23,87780
+Israel,IL,NA,34.75,31.5,8064040
+Italy,IT,EU,12.83,42.83,59797690
+Jamaica,JM,AS,-77.5,18.25,2793340
+Japan,JP,SA,138.0,36.0,126573480
+Jordan,JO,NA,36.0,31.0,7594550
+Kazakhstan,KZ,NA,68.0,48.0,17625230
+Kenya,KE,SA,38.0,1.0,46050300
+Korea (South),KR,AF,127.5,37.0,50293440
+Kuwait,KW,NA,47.75,29.5,3892120
+Kyrgyzstan,KG,EU,75.0,41.0,5939960
+Laos,LA,SA,105.0,18.0,6802020
+Latvia,LV,OC,25.0,57.0,1970500
+Lebanon,LB,SA,35.83,33.83,5850740
+Lesotho,LS,SA,28.25,-29.5,2135020
+Liberia,LR,AS,-9.5,6.5,4503440
+Libyan Arab Jamahiriya,LY,SA,17.0,25.0,6278440
+Liechtenstein,LI,AS,9.53,47.17,37530
+Lithuania,LT,EU,24.0,56.0,2878410
+Luxembourg,LU,NA,6.17,49.75,567110
+Macao,MO,AS,113.0,22.0,587610
+Macedonia,MK,EU,22.0,41.83,2078449
+Madagascar,MG,AS,47.0,-20.0,24235390
+Malaysia,MY,NA,101.97,4.22,30331010
+Maldives,MV,SA,73.0,3.2,363660
+Malta,MT,NA,14.42,35.92,418670
+Martinique,MQ,AS,-61.0,14.67,396430
+Mauritania,MR,AS,-12.0,20.0,4067560
+Mauritius,MU,OC,57.58,-20.3,1273210
+Mexico,MX,AF,-102.0,23.0,127017220
+Moldova,MD,OC,29.0,47.0,4068900
+Mongolia,MN,AS,105.0,46.0,2959130
+Montenegro,ME,AF,19.2,42.8,625780
+Morocco,MA,AF,-5.0,32.0,34377510
+Myanmar,MM,SA,98.0,22.0,53897150
+Namibia,,EU,17.0,-22.0,2458830
+Nepal,NP,NA,84.0,28.0,28513700
+Netherlands,NL,NA,5.75,52.5,16924930
+New Caledonia,NC,AS,165.5,-21.5,263120
+New Zealand,NZ,OC,174.0,-42.0,4528530
+Nicaragua,NI,OC,-85.0,13.0,6082030
+Nigeria,NG,NA,8.0,10.0,182201960
+Northern Mariana Islands,MP,EU,145.67,15.12,55070
+Norway,NO,OC,10.0,62.0,5210970
+Oman,OM,OC,57.0,21.0,4490540
+Pakistan,PK,NA,70.0,30.0,188924870
+Panama,PA,EU,-80.0,9.0,3929140
+Paraguay,PY,EU,-58.0,-23.0,6639120
+Peru,PE,NA,-76.0,-10.0,31376670
+Philippines,PH,EU,122.0,13.0,100699400
+Poland,PL,NA,20.0,52.0,38611790
+Portugal,PT,AF,-8.0,39.5,10349800
+Puerto Rico,PR,NA,-66.55,18.23,3683240
+Qatar,QA,NA,51.25,25.5,2235360
+Reunion,RE,AF,55.6,-21.1,861150
+Romania,RO,OC,25.0,46.0,19511320
+Russian Federation,RU,OC,47.0,60.0,143456920
+Saint Lucia,LC,NA,-60.97,13.88,185000
+Samoa,WS,AS,-172.33,-13.58,193230
+San Marino,SM,AS,12.42,43.93,31780
+Saudi Arabia,SA,EU,45.0,25.0,31540370
+Serbia,RS,NA,21.0,43.8,8850980
+Seychelles,SC,AS,55.67,-4.58,96470
+Singapore,SG,EU,103.8,1.37,5603740
+Slovakia,SK,EU,19.5,48.67,5426260
+Slovenia,SI,EU,15.17,46.25,2067530
+Somalia,SO,AS,48.0,6.0,10787100
+South Africa,ZA,OC,26.0,-30.0,54490410
+Spain,ES,EU,-4.0,40.0,46121700
+Sri Lanka,LK,EU,81.0,7.0,20715010
+Suriname,SR,SA,-56.0,4.0,542980
+Sweden,SE,OC,15.0,62.0,9779430
+Switzerland,CH,EU,8.0,47.0,8298660
+"Taiwan, Province of China",TW,OC,121.0,23.5,23381040
+Tajikistan,TJ,AS,71.0,39.0,8481860
+Tanzania,TZ,AS,35.0,-6.0,53470420
+Thailand,TH,AF,100.0,15.0,67959360
+Trinidad and Tobago,TT,OC,-61.0,11.0,1360090
+Tunisia,TN,NA,9.0,34.0,11253550
+Turkey,TR,NA,35.0,39.0,78665830
+Turkmenistan,TM,NA,60.0,40.0,5373500
+Uganda,UG,EU,33.0,2.0,39032380
+Ukraine,UA,OC,32.0,49.0,44823770
+United Arab Emirates,AE,AF,54.0,24.0,9156960
+United Kingdom,GB,SA,-4.5,54.0,64715810
+United States,US,OC,-98.0,38.0,321773630
+Uruguay,UY,OC,-56.0,-33.0,3431560
+Uzbekistan,UZ,OC,64.0,41.0,29893490
+Venezuela,VE,OC,-66.0,8.0,31108080
+Viet Nam,VN,NA,106.0,16.0,93447600
+Zimbabwe,ZW,SA,29.0,-19.0,15602750
