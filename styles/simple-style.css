@@ -28,10 +28,7 @@ svg {
     margin-left: 20%;
     /*margin-right: auto;*/
 }
-#map_cluster_choice_btns{
-  margin-left: 20%;
-  
-}
+
 
 @keyframes dash {
   from {
@@ -122,9 +119,23 @@ svg {
 
 #chartDiv {
 	display: none;
-	background-color: white;
+	color: #000000;
+	background-color: white ;
 }
 
+#project_info {
+  column-count: 2;
+  font-family: Comic sans MS;
+  font-size: 20px;
+  column-rule-color: #630110 ;
+}
+
+h1 {
+  font-family: Comic sans MS;
+  color: #630110 
+  
+  
+}
 svg {
     width: 75%;
     float: right;
@@ -135,17 +146,18 @@ svg {
     visibility: hidden;
     width: 20%;
     padding: 30px;
-    height: 50%;
-    opacity: 0.4;
+    height: 80%;
+    /*opacity: ;*/
     position: absolute;
-    background-color: #FFEAEE;
-    font-size: 50px;
+    background-color: #ffffff;
+    font-size: 70px;
     float: right;
 }
 
 #testDraw {
+    margin-left: 0;
     position: absolute;
-    clip: rect(0px,120px,100px,0px);
+    clip: rect(0px,200px,200px,0px);
 }
 
 #controls {
@@ -170,8 +182,12 @@ span:nth-child(2) {
   left: 40px;
 }
 
+#bubble-chart svg {
+  padding-left: 0;
+}
+
 svg {
-  border: 1px solid #ddd;
+  border: 0px solid #ddd;
 }
 
 circle {
@@ -198,6 +214,7 @@ circle {
 #clusterDiv {
   /*visibility: hidden;*/
   display: none;
+  margin-top: 1%;
 }
 
 #evalDiv {
@@ -208,6 +225,8 @@ circle {
 #map_cluster_choice_btns {
 	display: none;
 	background-color: white;
+  margin-left: 5%;
+
 }
 
 #selected_image{
@@ -216,3 +235,13 @@ circle {
   height: 10%;
 }
 
+.evalbutton {
+    background-color: #e7e7e7; 
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}			

@@ -5,11 +5,13 @@
 <link rel="stylesheet" href="./styles/w3.css">
 <link rel="stylesheet" href="./styles/simple-style.css">
 <link rel="stylesheet" href="./styles/cool_buttons.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="./scripts/buttons.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.js"></script>
 <script src="https://d3js.org/d3-queue.v3.min.js"></script>
 <script src="./scripts/cluster.js"></script>
 <script src="./scripts/evaluation.js"></script>
+<!--<script src="./scripts/ui_options.js"></script>-->
 
 <body>
   <div id="title" class="w3-container">
@@ -136,7 +138,7 @@
   
 
   <div class="w3-container" id="project_info">
-    <b> <h2>Project description and purpose:</h2></b>
+    <b> <h1><center>Project description and purpose:</center></h1></b>
     Have you ever wondered how different countries view different items? How income and other political features of a country, make the perspective of an item
     change?</br>
     How humans perceive physical objects in their mind and how their geographical and cultural background influences these decisions remain an interesting research 
@@ -144,14 +146,29 @@
     tools to study how people from different countries describe the same object by analyzing their sketch patterns. Further, we aim to investigate relationships
     between users sketch patterns and their background. For example, we are interested to analyze how people from different countries draw sketch of a house, 
     and if there are any similarities based on culture, geography, or economic condition of the country they belong. 
-    </br> <b> How to use our tool:</b></br>
-    Our tool is very simple to use, when you select the object you are interested in, you are given 2 options: to see the world map and a summary of how that country views that object,
-    or the cluser view which with the use of Machine Learning techniques, we were able to see how the perespectives of ceratin countries where similar. This cluster view, will cluster
-    the countries that for that obejct had similar pespectives.
-    
-    
-    
-     </br> <b> Project Team</b>
+    </br> 
+    <b> <h1><center>Our Data:</center></h1></b>
+    We got our data from Google's Quick draw project. You can find the link below: (https://quickdraw.withgoogle.com/data). </br>
+    <img src="images/Quickdraw.png" class="center" width="400" height="300" ></br>
+    We gathered all the sketches for the 5 different object we have chosen to analyze, and we have
+    developed algorithms for those objects to gather the finding that we have accomplished in this project. You are welcome to look over the data set to see the amount of data that we have been able to analyze.
+    </br> 
+    <b> <h1><center>How to use our tool:</center></h1></b>
+    Our tool is very simple to use... In the beginning you are given 2 options: one to select either project information (in which you are now) and the other is to choose and Object.
+    If you select "choose object" it will give you the five choices we have chosen to evaluate: Cake, Dog, House, Tornado and Face. When you select the object you are interested in,
+    you are given 3 options: to see the world map which shows the view summary for that country for that object, or the cluser view which with the use of Machine Learning techniques,
+    we were able to see how the perespectives of ceratin countries where similar, or the evaluation view.
+    </br> 
+    <b> <h1><center>Project Team:</center></h1></b>
+    Our project team was composed of 3 people: </br>
+    <img src="images/Nishant.png" class="center" width="250" height="300" ></br>
+    Nishant was the person that came up with the idea of analyzing this dataset, and the outcome that we could provide. He had awesome ideas on how we could analyze the sketches and the dataset.
+    </br>
+    <img src="images/Sishir.png" class="center" width="250" height="300"></br>
+    Sishir was a great addition to our team, as he had the most experience with Machine Learning. He was able to develop algorithms needed for the analysis of the dataset, and ways to cluser the objects together.
+    </br>
+    <img src="images/Johana.png" class="center" width="250" height="300"></br>
+    And last but not least, Johana. She was the person that developed the map view of the analysis. She also helped in developing our site.
   </div>
   
   <div class="w3-container" id="image_menu">
@@ -207,32 +224,38 @@
   <div class="w3-container"  id="chartDiv">
      <div class="details w3-container">
         <h2 class="country"></h2>
-        <div id="drawing">
-          
-        </div>
+        <div id="drawing"> </div>
       </div>
   </div>
+  
+  
 <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="./scripts/load_map.js"></script>
-<script src="./scripts/drawing.js"></script>
 
 
 <div class="w3-container"  id="clusterDiv">
-<div id="controls">
-  <span>
-    <!--<label><input id="combine" type="radio" name="grouping" value="combine" checked>Combine</label>-->
-    <label><input id="continents" type="radio" name="grouping" value="continents">Cluster</label>
-    <label><input id="country-centers" type="radio" name="grouping" value="country-centers">World Map</label>
-    <label><input id="population" type="radio" name="grouping" value="population">Population</label>
-  </span>
-  <span>
-    <label><input id="colors" type="radio" name="fill" value="color-view" checked>color-view</label>
-    <label><input id="flags" type="radio" name="fill" value="flag-view">flag-view</label>
-  </span>
+<div id="cluster_options">
+  <select id="cluster_dropdown" onchange="show_cluster()">
+    <option value="Geo_Cluster">All features</option>
+    <option value="direction">Direction</option>
+    <option value="time">Time</option>
+  </select>
+  <div style="display: block;">
+    <span>
+      <label><input class="w3-radio cluster_grouping" id="combine" type="radio" name="grouping" value="combine" checked>Combine</label>
+      <label><input class="w3-radio cluster_grouping" id="cluster" type="radio" name="grouping" value="cluster">Cluster</label>
+      <label><input class="w3-radio cluster_grouping" id="country-centers" type="radio" name="grouping" value="country-centers">World Map</label>
+    </span>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <span>
+      <label><input class="w3-radio" id="colors" type="radio" name="fill" value="color-view" checked>color-view</label>
+      <label><input class="w3-radio" id="flags" type="radio" name="fill" value="flag-view">flag-view</label>
+    </span>
+  </div>
 </div>
 <div id="country-info"></div>
-<div id="bubble-chart"></div>
+<div id="bubble-chart" style="margin-top:2%;"></div>
 <div class="infobox" style="visibility: hidden;">
   <h3 class="title">Country</h3>
 </div>
@@ -243,38 +266,17 @@
 
 <div class="w3-container"  id="evalDiv">
     <center>
-    <div class="hvrbox" id="cake" onclick="load_evaluation('cake')">
-        <img src="/images/cake.png" alt="Cake" class="hvrbox-layer_bottom">
-        <div class="hvrbox-layer_top">
-		      <div class="hvrbox-text">Cake</div>
-	      </div>
-    </div>
+    <a href="#" class="evalbutton" onclick="load_evaluation('dog')">Dog</a>
+    <a href="#" class="evalbutton" onclick="load_evaluation('house')">House</a>
+    <a href="#" class="evalbutton" onclick="load_evaluation('tornado')">Tornado</a>
+    <a href="#" class="evalbutton" onclick="load_evaluation('face')">Face</a>
+    <a href="#" class="evalbutton" onclick="load_evaluation('cake')">Cake</a>
     
-     <div class="hvrbox" id="dog" onclick="load_evaluation('dog')">
-        <img src="/images/dog.png" alt="Dog" class="hvrbox-layer_bottom">
-        <div class="hvrbox-layer_top">
-		      <div class="hvrbox-text">Dog</div>
-	      </div>
-    </div>
-    <div class="hvrbox" id="house" onclick="load_evaluation('house')">
-        <img src="/images/house.png" alt="house" class="hvrbox-layer_bottom">
-        <div class="hvrbox-layer_top">
-		      <div class="hvrbox-text">House</div>
-	      </div>
-    </div>
-    <div class="hvrbox" id="hurricane" onclick="load_evaluation('tornado')">
-        <img src="/images/hurricane.png" alt="hurricane" class="hvrbox-layer_bottom">
-        <div class="hvrbox-layer_top">
-		      <div class="hvrbox-text">Hurricane</div>
-	      </div>
-    </div>
-    <div class="hvrbox" id="face" onclick="load_evaluation('face')">
-        <img src="/images/myface.png" alt="face" class="hvrbox-layer_bottom">
-        <div class="hvrbox-layer_top">
-		      <div class="hvrbox-text">Face</div>
-	      </div>
-    </div>
+    <div id="barchart"></div>
+
     </center>
+         
   </div>
+  
 </body>
 </html>

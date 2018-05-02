@@ -19,9 +19,8 @@ function show_image_menu() {
 function show_map_cluster_menu(input_image) {
     
     document.getElementById("map_cluster_choice_btns").style = "display: block;";
-    
     document.getElementById("animation").style = "display: none;";
-    document.getElementById("image_menu").style = "display: none;";
+    document.getElementById("image_menu").style = "display: block; padding: 0;";
     document.getElementById("chartDiv").style = "display: none;";
     document.getElementById("clusterDiv").style = "display: none;";
     document.getElementById("project_info").style = "display: none;";
@@ -115,7 +114,7 @@ function drawMap(world, data) {
             return d.id;
         })
         .attr("d", path)
-        .style("fill", function(d, i ) { return colorScale(i); })
+        .style("fill","#A9A9A9")
         .on('mouseover', function (d) {
             d3.select(this)
                 .style("stroke", "white")
@@ -142,8 +141,8 @@ function drawMap(world, data) {
         .on('mouseout', function (d) {
             d3.select(this)
                 .style("stroke", null)
-                .style("stroke-width", 0.25)
-                .style("fill","black");
+                .style("stroke-width", 0.50)
+                .style("fill","#A9A9A9");
 
             d3.select('.details')
                 .style('visibility', "hidden");
@@ -169,9 +168,9 @@ function init(input_file, choice) {
     var scale = 1.25
     var delay = 1600
     var svg = d3.select("#drawing").append("svg")
-        .attr("width", "1280")
+        .attr("width", "1600")
         .attr("height", "600")
-        .attr("viewBox", "250 0 1280 600")
+        .attr("viewBox", "200 0 1600 600")
         .attr("preserveAspectRatio", "xMinYMin meet")
         .attr("id","testDraw")
         // .style("border", "1px solid #111")
